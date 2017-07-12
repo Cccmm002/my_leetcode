@@ -329,7 +329,9 @@ class Leetcode:
         solution_url = solution['submission_url']
         r = self.session.get(solution_url, proxies=PROXIES)
         assert r.status_code == 200
-        d = pq(r.text)
+        mpa = dict.fromkeys(range(32))
+        rt = t.text.translate(mpa)
+        d = pq(rt)
         question = d('html>head>meta[name=description]').attr('content').strip()
 
         pattern = re.compile(r'submissionCode: \'(?P<code>.*)\',\n  editCodeUrl', re.S)
