@@ -5,7 +5,7 @@
 //
 //
 // Note: 
-// You may assume k is always valid, 1 ≤ k ≤ array's length.
+// You may assume k is always valid, 1 ? k ? array's length.
 //
 // Credits:Special thanks to @mithmatt for adding this problem and creating all test cases.
 

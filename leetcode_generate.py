@@ -30,13 +30,13 @@ BASE_URL = 'https://leetcode.com'
 PROXIES = None
 HEADERS = {
         'Accept': '*/*',
-        'Accept-Encoding': 'gzip, deflate, sdch, br',
-        'Accept-Language': 'en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4',
+        'Accept-Encoding': 'gzip,deflate,sdch',
+        'Accept-Language': 'zh-CN,zh;q=0.8,gl;q=0.6,zh-TW;q=0.4',
         'Connection': 'keep-alive',
         'Content-Type': 'application/x-www-form-urlencoded',
         'Host': 'leetcode.com',
         'User-Agent':
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36'  # NOQA
     }
 
 
@@ -329,9 +329,7 @@ class Leetcode:
         solution_url = solution['submission_url']
         r = self.session.get(solution_url, proxies=PROXIES)
         assert r.status_code == 200
-        mpa = dict.fromkeys(range(32))
-        rt = t.text.translate(mpa)
-        d = pq(rt)
+        d = pq(r.text)
         question = d('html>head>meta[name=description]').attr('content').strip()
 
         pattern = re.compile(r'submissionCode: \'(?P<code>.*)\',\n  editCodeUrl', re.S)
@@ -499,7 +497,7 @@ def do_job(leetcode):
         leetcode.download_with_thread_pool()
     else:
         for qid in sys.argv[1:]:
-            print('begin leetcode by id: {id}'.format(id=sid))
+            print('begin leetcode by id: {id}'.format(id=qid))
             leetcode.download_by_id(int(qid))
 
     print('Leetcode finish dowload')
@@ -514,4 +512,3 @@ if __name__ == '__main__':
     while True:
         do_job(leetcode)
         time.sleep(24 * 60 * 60)
-        
