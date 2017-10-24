@@ -20,61 +20,48 @@
 
 class NumArray {
 private:
-    typedef struct Node {
-        int start;
-        int end;
-        int val;
-        Node *left;
-        Node *right;
-        
-        Node(int b, int e, int m) : start(b), end(e), val(m), left(NULL), right(NULL) {}
-        
-        int query(int i, int j) {
-            if (j < start || i > end) return 0;
-            if (i <= start && j >= end) return val;
-            return left->query(i, j) + right->query(i, j);
-        }
-    }*pNode;
+    vector<int> a, c;
+    int n;
     
-    pNode init(int b, int e, vector<int> &nums) {
-        int val = b == e ? nums[b] : INT_MAX;
-        pNode n = new Node(b, e, val);
-        if (b != e) {
-            int mid = (b + e)/2;
-            n->left = init(b, mid, nums);
-            n->right = init(mid + 1, e, nums);
-            n->val = n->left->val + n->right->val;
-        }
-        return n;
+    inline int lowbit (int x) {
+        return (x & -x);
     }
     
-    pNode root = NULL;
-    
-    int _update(int i, int val, pNode cur) {
-        if (cur->start == cur->end && cur->start == i) {
-            int diff = val - cur->val;
-            cur->val = val;
-            return diff;
+    int _sum(int x) {
+        int res = 0;
+        for(int i = x; i > 0; i -= lowbit(i)){
+            res += c[i];
         }
-        int mid = (cur->start + cur->end)/2;
-        int diff = (i <= mid) ? _update(i, val, cur->left) : _update(i, val, cur->right);
-        cur->val += diff;
-        return diff;
+        return res;    
     }
     
 public:
     NumArray(vector<int> nums) {
-        int len = nums.size();
-        if (len > 0)
-            root = init(0, len - 1, nums);
+        n = nums.size();
+        if (n == 0) return;
+        vector<int> va(n + 1);
+        for (int i = 0; i < n; i++) va[i + 1] = nums[i];
+        a = va;
+        vector<int> vc(n + 1);
+        vector<int> psum(n + 1);
+        psum[1] = nums[0];
+        for (int i = 2; i <= n; i++) psum[i] = nums[i - 1] + psum[i - 1];
+        for (int i = 1; i <= n; i++) {
+            vc[i] = psum[i] - psum[i - lowbit(i)];
+        }
+        c = vc;
     }
     
     void update(int i, int val) {
-        _update(i, val, root);
+        int diff = val - a[i + 1];
+        a[i + 1] = val;
+        for(int t = i + 1; t <= n; t += lowbit(t)){
+            c[t] += diff;
+        }
     }
     
     int sumRange(int i, int j) {
-        return root->query(i, j);
+        return _sum(j + 1) - _sum(i);
     }
 };
 

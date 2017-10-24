@@ -19,6 +19,10 @@
 #
 #
 # Related problem: Rotate Array
+#
+#
+# Update (2017-10-16):
+# We have updated the function signature to accept a character array, so please reset to the default code definition by clicking on the reload button above the code editor. Also, Run Code is now available!
 
 
 class Solution:
