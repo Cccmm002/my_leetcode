@@ -26,6 +26,7 @@
 //
 // Note:
 // The length of each dimension in the given grid does not exceed 50.
+//
 
 
 class UF {

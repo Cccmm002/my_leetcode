@@ -1,10 +1,10 @@
-// Given a collection of distinct numbers, return all possible permutations.
+// Given a collection of distinct integers, return all possible permutations.
+//
+// Example:
 //
 //
-//
-// For example,
-// [1,2,3] have the following permutations:
-//
+// Input: [1,2,3]
+// Output:
 // [
 //   [1,2,3],
 //   [1,3,2],
@@ -13,6 +13,8 @@
 //   [3,1,2],
 //   [3,2,1]
 // ]
+//
+//
 
 
 class Solution {

@@ -1,9 +1,11 @@
 // Given a binary tree, return all root-to-leaf paths.
 //
+// Note: A leaf is a node with no children.
 //
-// For example, given the following binary tree:
+// Example:
 //
 //
+// Input:
 //
 //    1
 //  /   \
@@ -11,13 +13,11 @@
 //  \
 //   5
 //
+// Output: ["1->2->5", "1->3"]
+//
+// Explanation: All root-to-leaf paths are: 1->2->5, 1->3
 //
 //
-// All root-to-leaf paths are:
-// ["1->2->5", "1->3"]
-//
-//
-// Credits:Special thanks to @jianchao.li.fighter for adding this problem and creating all test cases.
 
 
 /**

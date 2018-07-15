@@ -1,17 +1,18 @@
 // Given a string s, partition s such that every substring of the partition is a palindrome.
 //
-//
 // Return all possible palindrome partitioning of s.
 //
+// Example:
 //
-// For example, given s = "aab",
 //
-// Return
-//
+// Input: "aab"
+// Output:
 // [
 //   ["aa","b"],
 //   ["a","a","b"]
 // ]
+//
+//
 
 
 class Solution {

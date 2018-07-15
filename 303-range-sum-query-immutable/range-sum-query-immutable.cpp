@@ -1,4 +1,4 @@
-// Given an integer array nums, find the sum of the elements between indices i and j (i &le; j), inclusive.
+// Given an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive.
 //
 // Example:
 //
@@ -14,6 +14,8 @@
 //
 // You may assume that the array does not change.
 // There are many calls to sumRange function.
+//
+//
 
 
 class NumArray {

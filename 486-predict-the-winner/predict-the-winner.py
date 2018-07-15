@@ -26,6 +26,8 @@
 # 1 <= length of the array <= 20. 
 # Any scores in the given array are non-negative integers and will not exceed 10,000,000.
 # If the scores of both players are equal, then player 1 is still the winner.
+#
+#
 
 
 class Solution(object):

@@ -1,44 +1,47 @@
 // Given a binary tree
 //
-//     struct TreeLinkNode {
-//       TreeLinkNode *left;
-//       TreeLinkNode *right;
-//       TreeLinkNode *next;
-//     }
 //
+// struct TreeLinkNode {
+//   TreeLinkNode *left;
+//   TreeLinkNode *right;
+//   TreeLinkNode *next;
+// }
 //
 //
 // Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.
 //
 // Initially, all next pointers are set to NULL.
 //
-//
 // Note:
 //
-// You may only use constant extra space.
-// You may assume that it is a perfect binary tree (ie, all leaves are at the same level, and every parent has two children).
+//
+// 	You may only use constant extra space.
+// 	Recursive approach is fine, implicit stack space does not count as extra space for this problem.
+// 	You may assume that it is a perfect binary tree (ie, all leaves are at the same level, and every parent has two children).
 //
 //
+// Example:
 //
-//
-// For example,
 // Given the following perfect binary tree,
 //
-//          1
-//        /  \
-//       2    3
-//      / \  / \
-//     4  5  6  7
 //
+//      1
+//    /  \
+//   2    3
+//  / \  / \
+// 4  5  6  7
 //
 //
 // After calling your function, the tree should look like:
 //
-//          1 -> NULL
-//        /  \
-//       2 -> 3 -> NULL
-//      / \  / \
-//     4->5->6->7 -> NULL
+//
+//      1 -> NULL
+//    /  \
+//   2 -> 3 -> NULL
+//  / \  / \
+// 4->5->6->7 -> NULL
+//
+//
 
 
 /**
@@ -52,15 +55,20 @@
 class Solution {
 public:
     void connect(TreeLinkNode *root) {
-        while(root!=NULL && root->left!=NULL){
-            TreeLinkNode *nextLevel=root->left;
-            while(root!=NULL) {
-                root->left->next=root->right;
-                if(root->next!=NULL)
-                    root->right->next=root->next->left;
-                root=root->next;
+        if (root == NULL) return;
+        queue<TreeLinkNode*> q;
+        q.push(root);
+        while (!q.empty()) {
+            int n = q.size();
+            for (int i = 0; i < n; i++) {
+                TreeLinkNode *cur = q.front();
+                q.pop();
+                if (i != n - 1) {
+                    cur->next = q.front();
+                }
+                if (cur->left != NULL) q.push(cur->left);
+                if (cur->right != NULL) q.push(cur->right);
             }
-            root=nextLevel;
         }
     }
 };

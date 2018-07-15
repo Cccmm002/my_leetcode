@@ -1,21 +1,39 @@
 # -*- coding:utf-8 -*-
 
 
-# Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be segmented into a space-separated sequence of one or more dictionary words. You may assume the dictionary does not contain duplicate words.
+# Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
+#
+# Note:
 #
 #
-# For example, given
-# s = "leetcode",
-# dict = ["leet", "code"].
+# 	The same word in the dictionary may be reused multiple times in the segmentation.
+# 	You may assume the dictionary does not contain duplicate words.
 #
 #
-#
-# Return true because "leetcode" can be segmented as "leet code".
-#
+# Example 1:
 #
 #
-# UPDATE (2017/1/4):
-# The wordDict parameter had been changed to a list of strings (instead of a set of strings). Please reload the code definition to get the latest changes.
+# Input: s = "leetcode", wordDict = ["leet", "code"]
+# Output: true
+# Explanation: Return true because "leetcode" can be segmented as "leet code".
+#
+#
+# Example 2:
+#
+#
+# Input: s = "applepenapple", wordDict = ["apple", "pen"]
+# Output: true
+# Explanation: Return true because "applepenapple" can be segmented as "apple pen apple".
+#              Note that you are allowed to reuse a dictionary word.
+#
+#
+# Example 3:
+#
+#
+# Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
+# Output: false
+#
+#
 
 
 class Solution(object):

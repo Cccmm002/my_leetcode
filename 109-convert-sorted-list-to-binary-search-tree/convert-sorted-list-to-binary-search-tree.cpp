@@ -1,4 +1,21 @@
 // Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
+//
+// For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
+//
+// Example:
+//
+//
+// Given the sorted linked list: [-10,-3,0,5,9],
+//
+// One possible answer is: [0,-3,9,-10,null,5], which represents the following height balanced BST:
+//
+//       0
+//      / \
+//    -3   9
+//    /   /
+//  -10  5
+//
+//
 
 
 /**
@@ -19,26 +36,23 @@
  * };
  */
 class Solution {
-public:
-    TreeNode* sortedArrayToBST(vector<int>& nums) {
-        int length=nums.size();
-        if(length==0) return NULL;
-        int middle=length/2;
-        TreeNode* root=new TreeNode(nums[middle]);
-        vector<int> l(nums.begin(),nums.begin()+middle);
-        vector<int> r(nums.begin()+middle+1,nums.end());
-        root->left=sortedArrayToBST(l);
-        root->right=sortedArrayToBST(r);
-        return root;
-    }
-
-    TreeNode* sortedListToBST(ListNode* head) {
-        vector<int> v;
-        while(head!=NULL){
-            v.push_back(head->val);
-            head=head->next;
+private:
+    TreeNode* toTree(ListNode *head, ListNode *tail) {
+        if (head == tail) return NULL;
+        ListNode *slow = head, *fast = head;
+        while (fast != tail && fast->next != tail) {
+            slow = slow->next;
+            fast = fast->next->next;
         }
-        sort(v.begin(),v.end());
-        return sortedArrayToBST(v);
+        TreeNode *res = new TreeNode(slow->val);
+        res->left = toTree(head, slow);
+        res->right = toTree(slow->next, tail);
+        return res;
+    }
+    
+public:
+    TreeNode* sortedListToBST(ListNode* head) {
+        if (head == NULL) return NULL;
+        return toTree(head, NULL);
     }
 };

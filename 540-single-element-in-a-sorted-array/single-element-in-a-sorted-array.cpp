@@ -1,3 +1,4 @@
+//
 // Given a sorted array consisting of only integers where every element appears twice except for one element which appears once. Find this single element that appears only once. 
 //
 //
@@ -17,6 +18,8 @@
 //
 // Note:
 // Your solution should run in O(log n) time and O(1) space.
+//
+//
 
 
 class Solution {

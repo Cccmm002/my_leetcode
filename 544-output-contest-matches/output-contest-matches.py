@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 
+#
 # During the NBA playoffs, we always arrange the rather strong team to play with the rather weak team, like make the rank 1 team play with the rank nth team, which is a good strategy to make the contest more interesting. Now, you're given n teams, you need to output their final contest matches in the form of a string.
 #
 #
@@ -44,6 +45,8 @@
 #
 # The n is in range [2, 212].
 # We ensure that the input n can be converted into the form 2k, where k is a positive integer.
+#
+#
 
 
 class Solution(object):

@@ -3,14 +3,18 @@
 
 # Given a string s, return all the palindromic permutations (without duplicates) of it. Return an empty list if no palindromic permutation could be form.
 #
-#
-# For example:
-#
-#
-# Given s = "aabb", return ["abba", "baab"].
+# Example 1:
 #
 #
-# Given s = "abc", return [].
+# Input: "aabb"
+# Output: ["abba", "baab"]
+#
+# Example 2:
+#
+#
+# Input: "abc"
+# Output: []
+#
 
 
 class Solution(object):

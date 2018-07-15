@@ -1,4 +1,4 @@
-// Given an array of integers, 1 &le; a[i] &le; n (n = size of array), some elements appear twice and others appear once.
+// Given an array of integers, 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.
 //
 // Find all the elements that appear twice in this array.
 //
@@ -11,6 +11,7 @@
 //
 // Output:
 // [2,3]
+//
 
 
 class Solution {

@@ -1,32 +1,34 @@
-// Given a sorted integer array where the range of elements are in the inclusive range [lower, upper], return its missing ranges.
+// Given a sorted integer array nums, where the range of elements are in the inclusive range [lower, upper], return its missing ranges.
+//
+// Example:
 //
 //
-// For example, given [0, 1, 3, 50, 75], lower = 0 and upper = 99, return ["2", "4->49", "51->74", "76->99"].
+// Input: nums = [0, 1, 3, 50, 75], lower = 0 and upper = 99,
+// Output: ["2", "4->49", "51->74", "76->99"]
+//
+//
 
 
 class Solution {
 public:
     vector<string> findMissingRanges(vector<int>& nums, int lower, int upper) {
         vector<string> res;
-        long long should = lower;
-        for (int c : nums) {
-            long long cur = (long long)c;
-            if (cur < should) continue;
-            if (cur != should) {
-                long long right = cur - 1;
-                if (right == should) {
-                    res.push_back(to_string(should));
-                }
-                else {
-                    res.push_back(to_string(should) + "->" + to_string(right));
-                }
+        int n = nums.size();
+        vector<long long> v(n + 1, 0);
+        for (int i = 0; i < n; i++) v[i] = nums[i];
+        long long prev = ((long long)lower) - 1;
+        v[n] = ((long long)upper) + 1;
+        for (int i = 0; i <= n; i++) {
+            long long diff = v[i] - prev;
+            if (diff == 2) 
+                res.push_back(to_string(v[i] - 1));
+            else if (diff > 2) {
+                string left = to_string(prev + 1);
+                string right = to_string(v[i] - 1);
+                res.push_back(left + "->" + right);
             }
-            should = cur + 1;
+            prev = v[i];
         }
-        if (should == upper)
-            res.push_back(to_string(should));
-        else if(should < upper)
-            res.push_back(to_string(should) + "->" + to_string(upper));
         return res;
     }
 };

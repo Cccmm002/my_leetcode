@@ -1,4 +1,4 @@
-// Given an array nums, we call (i, j) an important reverse pair if i &lt; j and nums[i] &gt; 2*nums[j].
+// Given an array nums, we call (i, j) an important reverse pair if i < j and nums[i] > 2*nums[j].
 //
 // You need to return the number of important reverse pairs in the given array.
 //
@@ -18,6 +18,8 @@
 //
 // The length of the given array will not exceed 50,000.
 // All the numbers in the input array are in the range of 32-bit integer.
+//
+//
 
 
 class Solution {

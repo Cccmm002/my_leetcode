@@ -57,35 +57,27 @@
  */
 class Solution {
 private:
-    void traversal(TreeNode *root, vector<int> &res, TreeNode *parent, bool left) {
-        if (root == NULL) return;
+    TreeNode* dfs(TreeNode* root, vector<int> &res) {
+        if (root == NULL) return NULL;
         if (root->left == NULL && root->right == NULL) {
             res.push_back(root->val);
-            if (parent != NULL) {
-                if (left) parent->left = NULL;
-                else parent->right = NULL;
-            }
-            return;
+            return NULL;
         }
-        traversal(root->left, res, root, true);
-        traversal(root->right, res, root, false);
-    }
-    
-    vector<int> leaves(TreeNode *root) {
-        vector<int> res;
-        traversal(root, res, NULL, true);
-        return res;
+        else {
+            root->left = dfs(root->left, res);
+            root->right = dfs(root->right, res);
+            return root;
+        }
     }
     
 public:
     vector<vector<int>> findLeaves(TreeNode* root) {
         vector<vector<int>> res;
-        if (root == NULL) return res;
-        while (root->left != NULL || root->right != NULL) {
-            res.push_back(leaves(root));
+        while (root != NULL) {
+            vector<int> r;
+            root = dfs(root, r);
+            res.push_back(r);
         }
-        vector<int> one = {root->val};
-        res.push_back(one);
         return res;
     }
 };

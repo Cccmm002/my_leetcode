@@ -60,6 +60,7 @@
 #
 # Note:
 # The height of binary tree is in the range of [1, 10].
+#
 
 
 # Definition for a binary tree node.

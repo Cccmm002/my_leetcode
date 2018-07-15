@@ -1,3 +1,4 @@
+//
 // Design and implement a data structure for a compressed string iterator. It should support the following operations: next and hasNext.
 //
 //
@@ -31,6 +32,8 @@
 // iterator.next(); // return 'e'
 // iterator.hasNext(); // return false
 // iterator.next(); // return ' '
+//
+//
 
 
 class StringIterator {

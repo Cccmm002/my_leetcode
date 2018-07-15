@@ -3,7 +3,7 @@
 
 # Given a sequence of words, check whether it forms a valid word square.
 #
-# A sequence of words forms a valid word square if the kth row and column read the exact same string, where 0 &le; k &lt; max(numRows, numColumns).
+# A sequence of words forms a valid word square if the kth row and column read the exact same string, where 0 ≤ k < max(numRows, numColumns).
 #
 # Note:
 #
@@ -76,6 +76,8 @@
 # The third row reads "read" while the third column reads "lead".
 #
 # Therefore, it is NOT a valid word square.
+#
+#
 
 
 class Solution(object):

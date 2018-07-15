@@ -16,6 +16,8 @@
 // n = 10, I pick 6.
 //
 // Return 6.
+//
+//
 
 
 // Forward declaration of guess API.

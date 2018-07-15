@@ -1,3 +1,4 @@
+//
 // Given a sorted array, two integers k and x, find the k closest elements to x in the array.  The result should also be sorted in ascending order.
 // If there is a tie,  the smaller elements are always preferred.
 //
@@ -30,6 +31,7 @@
 //
 // UPDATE (2017/9/19):
 // The arr parameter had been changed to an array of integers (instead of a list of integers). Please reload the code definition to get the latest changes.
+//
 
 
 class Solution {

@@ -13,6 +13,7 @@
 //
 // Note:
 // The vowels does not include the letter "y".
+//
 
 
 public class Solution {

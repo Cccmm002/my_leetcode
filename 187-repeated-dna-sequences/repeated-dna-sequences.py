@@ -5,13 +5,14 @@
 #
 # Write a function to find all the 10-letter-long sequences (substrings) that occur more than once in a DNA molecule.
 #
+# Example:
 #
-# For example,
 #
-# Given s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT",
+# Input: s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
 #
-# Return:
-# ["AAAAACCCCC", "CCCCCAAAAA"].
+# Output: ["AAAAACCCCC", "CCCCCAAAAA"]
+#
+#
 
 
 class Solution(object):

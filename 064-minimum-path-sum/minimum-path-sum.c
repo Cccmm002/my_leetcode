@@ -2,13 +2,19 @@
 //
 // Note: You can only move either down or right at any point in time.
 //
-// Example 1:
+// Example:
 //
-// [[1,3,1],
-//  [1,5,1],
-//  [4,2,1]]
 //
-// Given the above grid map, return 7. Because the path 1&rarr;3&rarr;1&rarr;1&rarr;1 minimizes the sum.
+// Input:
+// [
+//   [1,3,1],
+//   [1,5,1],
+//   [4,2,1]
+// ]
+// Output: 7
+// Explanation: Because the path 1→3→1→1→1 minimizes the sum.
+//
+//
 
 
 int minPathSum(int** grid, int gridRowSize, int gridColSize) {

@@ -9,21 +9,21 @@
 //
 // Note:
 // The length of A and B will be between 1 and 10000.
+//
 
 
 class Solution {
 public:
     int repeatedStringMatch(string A, string B) {
         string s = A;
-        int count = 1;
+        int times = 1;
         while (s.size() < B.size()) {
-            s = s + A;
-            count += 1;
+            s += A;
+            ++times;
         }
-        if (s.find(B) != string::npos) return count;
+        if (s.find(B) != string::npos) return times;
         s += A;
-        count++;
-        if (s.find(B) != string::npos) return count;
-        else return -1;
+        if (s.find(B) != string::npos) return times + 1;
+        return -1;
     }
 };

@@ -1,14 +1,11 @@
 // Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
 //
 //
-//
-// Integers in each row are sorted in ascending from left to right.
-// Integers in each column are sorted in ascending from top to bottom.
-//
+// 	Integers in each row are sorted in ascending from left to right.
+// 	Integers in each column are sorted in ascending from top to bottom.
 //
 //
-//
-// For example,
+// Example:
 //
 // Consider the following matrix:
 //
@@ -22,21 +19,28 @@
 // ]
 //
 //
-// Given target = 5, return true.
-// Given target = 20, return false.
+// Given target = 5, return true.
+//
+// Given target = 20, return false.
+//
 
 
 class Solution {
 public:
-    bool search(vector<vector<int>>& matrix, int pRow, int pCol, int target) {
-        if(pRow>=matrix.size() || pCol<0) return false;
-        int val=matrix[pRow][pCol];
-        if(val<target) return search(matrix, pRow+1, pCol, target);
-        if(val>target) return search(matrix, pRow, pCol-1, target);
-        return true;
-    }
-
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
-        return search(matrix, 0, matrix[0].size()-1,target);
+        int height = matrix.size();
+        if (height == 0) return false;
+        int width = matrix[0].size();
+        int col = width - 1;
+        int row = 0;
+        while (col >= 0 && row < height) {
+            if (target == matrix[row][col])
+                return true;
+            if (target > matrix[row][col])
+                row++;
+            else
+                col--;
+        }
+        return false;
     }
 };

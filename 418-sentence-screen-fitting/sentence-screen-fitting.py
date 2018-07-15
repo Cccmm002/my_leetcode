@@ -11,7 +11,7 @@
 # Two consecutive words in a line must be separated by a single space.
 # Total words in the sentence won't exceed 100.
 # Length of each word is greater than 0 and won't exceed 10.
-# 1 &le; rows, cols &le; 20,000.
+# 1 ≤ rows, cols ≤ 20,000.
 #
 #
 #
@@ -66,6 +66,8 @@
 # had--
 #
 # The character '-' signifies an empty space on the screen.
+#
+#
 
 
 class Solution(object):

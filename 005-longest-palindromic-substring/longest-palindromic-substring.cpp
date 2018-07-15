@@ -1,20 +1,20 @@
 // Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
 //
-// Example:
+// Example 1:
+//
 //
 // Input: "babad"
-//
 // Output: "bab"
-//
 // Note: "aba" is also a valid answer.
 //
 //
+// Example 2:
 //
-// Example:
 //
 // Input: "cbbd"
-//
 // Output: "bb"
+//
+//
 
 
 class Solution {

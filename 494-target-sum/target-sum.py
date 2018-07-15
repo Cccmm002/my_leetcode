@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 
+#
 # You are given a list of non-negative integers, a1, a2, ..., an, and a target, S. Now you have 2 symbols + and -. For each integer, you should choose one from + and - as its new symbol.
 #
 #
@@ -28,6 +29,8 @@
 # The length of the given array is positive and will not exceed 20. 
 # The sum of elements in the given array will not exceed 1000.
 # Your output answer is guaranteed to be fitted in a 32-bit integer.
+#
+#
 
 
 class Solution(object):

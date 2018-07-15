@@ -19,7 +19,10 @@
 // The given list may contain duplicates, so ascending order means >= here.
 // 1 <= k <= 3500
 //  -105 <= value of elements <= 105.
-// For Java users, please note that the input type has been changed to List&lt;List&lt;Integer&gt;&gt;. And after you reset the code template, you'll see this point.
+// For Java users, please note that the input type has been changed to List<List<Integer>>. And after you reset the code template, you'll see this point.
+//
+//
+//
 
 
 struct Element {

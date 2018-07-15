@@ -19,7 +19,9 @@
 # The number of elements of the given array will not exceed 10,000 
 # The length sum of elements in the given array will not exceed 600,000. 
 # All the input string will only include lower case letters.
-# The returned elements order does not matter.
+# The returned elements order does not matter. 
+#
+#
 
 
 class Solution(object):

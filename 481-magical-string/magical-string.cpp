@@ -1,3 +1,4 @@
+//
 // A magical string S consists of only '1' and '2' and obeys the following rules:
 //
 //
@@ -40,6 +41,8 @@
 // Input: 6
 // Output: 3
 // Explanation: The first 6 elements of magical string S is "12211" and it contains three 1's, so return 3.
+//
+//
 
 
 class Solution {

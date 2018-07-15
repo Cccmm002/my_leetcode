@@ -14,7 +14,7 @@
 //
 // Now, the user wants to input a new sentence. The following function will provide the next character the user types: 
 //
-// List&lt;String&gt; input(char c): The input c is the next character typed by the user. The character will only be lower-case letters ('a' to 'z'), blank space (' ') or a special character ('#'). Also, the previously typed sentence should be recorded in your system. The output will be the top 3 historical hot sentences that have prefix the same as the part of sentence already typed.
+// List<String> input(char c): The input c is the next character typed by the user. The character will only be lower-case letters ('a' to 'z'), blank space (' ') or a special character ('#'). Also, the previously typed sentence should be recorded in your system. The output will be the top 3 historical hot sentences that have prefix the same as the part of sentence already typed.
 //
 //
 // Example:
@@ -76,6 +76,9 @@
 // The number of complete sentences that to be searched won't exceed 100. The length of each sentence including those in the historical data won't exceed 100. 
 // Please use double-quote instead of single-quote when you write test cases even for a character input.
 // Please remember to RESET your class variables declared in class AutocompleteSystem, as static/class variables are persisted across multiple test cases. Please see here for more details.
+//
+//
+//
 
 
 class AutocompleteSystem {

@@ -1,3 +1,4 @@
+//
 // Clone an undirected graph. Each node in the graph contains a label and a list of its neighbors.
 //
 //
@@ -35,6 +36,10 @@
 //     0 --- 2
 //          / \
 //          \_/
+//
+//
+//
+//
 
 
 /**
@@ -45,45 +50,19 @@
  *     UndirectedGraphNode(int x) : label(x) {};
  * };
  */
- 
-typedef UndirectedGraphNode *pNode;
- 
 class Solution {
+private:
+    unordered_map<UndirectedGraphNode*, UndirectedGraphNode*> dict;
+    
 public:
     UndirectedGraphNode *cloneGraph(UndirectedGraphNode *node) {
-        if(node==NULL) return NULL;
-        
-        queue<pNode> q;
-        q.push(node);
-        map<int, pNode> nodeList;
-        nodeList[node->label]=node;
-        
-        while(!q.empty()){
-            pNode pn=q.front();
-            q.pop();
-            for(int i=0;i<pn->neighbors.size();i++){
-                pNode n=pn->neighbors[i];
-                if(nodeList.find(n->label)!=nodeList.end())
-                    continue;
-                nodeList[n->label]=n;
-                q.push(n);
-            }
+        if (node == NULL) return NULL;
+        if (dict.find(node) != dict.end()) return dict[node];
+        UndirectedGraphNode *res = new UndirectedGraphNode(node->label);
+        dict[node] = res;
+        for (UndirectedGraphNode *n : node->neighbors) {
+            res->neighbors.push_back(cloneGraph(n));
         }
-        
-        map<int, pNode> newNodeList;
-        map<int, pNode>::iterator it=nodeList.begin();
-        while(it!=nodeList.end()){
-            newNodeList[it->first]=new UndirectedGraphNode(it->first);
-            it++;
-        }
-        
-        it=nodeList.begin();
-        while(it!=nodeList.end()){
-            vector<pNode> v=it->second->neighbors;
-            for(int i=0;i<v.size();i++)
-                newNodeList[it->first]->neighbors.push_back(newNodeList[v[i]->label]);
-            it++;
-        }
-        return newNodeList[node->label];
+        return res;
     }
 };

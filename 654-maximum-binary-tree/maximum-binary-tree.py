@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 
+#
 # Given an integer array with no duplicates. A maximum tree building on this array is defined as follow:
 #
 # The root is the maximum number in the array. 
@@ -31,6 +32,8 @@
 # Note:
 #
 # The size of the given array will be in the range [1,1000].
+#
+#
 
 
 # Definition for a binary tree node.

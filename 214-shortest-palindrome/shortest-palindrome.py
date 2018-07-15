@@ -1,14 +1,21 @@
 # -*- coding:utf-8 -*-
 
 
-# Given a string S, you are allowed to convert it to a palindrome by adding characters in front of it. Find and return the shortest palindrome you can find by performing this transformation.
+# Given a string s, you are allowed to convert it to a palindrome by adding characters in front of it. Find and return the shortest palindrome you can find by performing this transformation.
+#
+# Example 1:
 #
 #
-# For example: 
-# Given "aacecaaa", return "aaacecaaa".
-# Given "abcd", return "dcbabcd".
+# Input: "aacecaaa"
+# Output: "aaacecaaa"
 #
-# Credits:Special thanks to @ifanchu for adding this problem and creating all test cases. Thanks to @Freezen for additional test cases.
+#
+# Example 2:
+#
+#
+# Input: "abcd"
+# Output: "dcbabcd"
+#
 
 
 class Solution(object):

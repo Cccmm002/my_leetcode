@@ -9,6 +9,8 @@
 #
 # Input: "Hello, my name is John"
 # Output: 5
+#
+#
 
 
 class Solution(object):

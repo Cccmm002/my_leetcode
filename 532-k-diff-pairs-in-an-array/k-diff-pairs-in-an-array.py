@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 
+#
 # Given an array of integers and an integer k, you need to find the number of unique k-diff pairs in the array. Here a k-diff pair is defined as an integer pair (i, j), where i and j are both numbers in the array and their absolute difference is k.
 #
 #
@@ -34,6 +35,8 @@
 # The pairs (i, j) and (j, i) count as the same pair.
 # The length of the array won't exceed 10,000.
 # All the integers in the given input belong to the range: [-1e7, 1e7].
+#
+#
 
 
 class Solution(object):

@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 
+#
 # Given an array A (index starts at 1) consisting of N integers: A1, A2, ..., AN and an integer B. The integer B denotes that from any place (suppose the index is i) in the array A, you can jump to any one of the place in the array A indexed i+1, i+2, …, i+B if this place can be jumped to. Also, if you step on the index i, you have to pay Ai coins. If Ai is -1, it means you can’t jump to the place indexed i in the array.
 #
 #
@@ -35,6 +36,8 @@
 # A1 >= 0. A2, ..., AN (if exist) will in the range of [-1, 100]. 
 # Length of A is in the range of [1, 1000].
 # B is in the range of [1, 100].
+#
+#
 
 
 class Solution(object):

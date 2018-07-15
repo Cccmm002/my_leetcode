@@ -25,7 +25,8 @@
 //
 //
 //
-// After the rain, water are trapped between the blocks. The total volume of water trapped is 4.
+// After the rain, water is trapped between the blocks. The total volume of water trapped is 4.
+//
 
 
 struct Cell {

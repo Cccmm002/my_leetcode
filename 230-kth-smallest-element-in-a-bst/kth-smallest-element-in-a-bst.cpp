@@ -1,12 +1,36 @@
 // Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.
 //
 // Note: 
-// You may assume k is always valid, 1 &le; k &le; BST's total elements.
+// You may assume k is always valid, 1 ≤ k ≤ BST's total elements.
+//
+// Example 1:
+//
+//
+// Input: root = [3,1,4,null,2], k = 1
+//    3
+//   / \
+//  1   4
+//   \
+//    2
+// Output: 1
+//
+// Example 2:
+//
+//
+// Input: root = [5,3,6,2,4,null,null,1], k = 3
+//        5
+//       / \
+//      3   6
+//     / \
+//    2   4
+//   /
+//  1
+// Output: 3
+//
 //
 // Follow up:
 // What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?
 //
-// Credits:Special thanks to @ts for adding this problem and creating all test cases.
 
 
 /**
@@ -19,36 +43,17 @@
  * };
  */
 class Solution {
-public:
-    int counter(TreeNode* root, int k, int *kth, bool* find) {
-        if(*find) return 0;
-        if(root->left==NULL){
-            if(k==1) {
-                *find=true;
-                *kth=root->val;
-                return 0;
-            }
-            else if(root->right==NULL)
-                return 1;
-            else
-                return counter(root->right,k-1,kth,find)+1;
-        }
-        int countLeft=0,countRight=0;
-        countLeft=counter(root->left,k,kth,find);
-        if(k-countLeft==1 && !(*find)){
-            *find=true;
-            *kth=root->val;
-            return countLeft+1;
-        }
-        if(root->right!=NULL && !(*find))
-            countRight=counter(root->right,k-countLeft-1,kth,find);
-        return countLeft+countRight+1;
+private:
+    int GetCount(TreeNode* root) {
+        if (root == NULL) return 0;
+        return 1 + GetCount(root->left) + GetCount(root->right);
     }
 
+public:
     int kthSmallest(TreeNode* root, int k) {
-        int kth=0;
-        bool find=false;
-        counter(root,k,&kth,&find);
-        return kth;
+        int left = GetCount(root->left);
+        if (k == left + 1) return root->val;
+        if (k <= left) return kthSmallest(root->left, k);
+        else return kthSmallest(root->right, k - left - 1);
     }
 };

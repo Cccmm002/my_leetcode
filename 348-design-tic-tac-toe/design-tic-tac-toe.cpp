@@ -54,6 +54,7 @@
 //
 // Follow up:
 // Could you do better than O(n2) per move() operation?
+//
 
 
 class TicTacToe {

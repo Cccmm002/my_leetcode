@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 
+#
 # In English, we have a concept called root, which can be followed by some other words to form another longer word - let's call this word successor. For example, the root an, followed by other, which can form another word another.
 #
 #
@@ -29,7 +30,9 @@
 #  1 <= dict words number <= 1000 
 #  1 <= sentence words number <= 1000  
 #  1 <= root length <= 100 
-#  1 <= sentence words length <= 1000
+#  1 <= sentence words length <= 1000 
+#
+#
 
 
 class Solution(object):

@@ -18,59 +18,45 @@
 # Input: "23:59"
 # Output: "22:22"
 # Explanation: The next closest time choosing from digits 2, 3, 5, 9, is 22:22. It may be assumed that the returned time is next day's time since it is smaller than the input time numerically.
+#
+#
 
 
 class Solution(object):
-    def genTwoDigits(self, s):
-        res = []
-        for a in s:
-            for b in s:
-                res.append(a * 10 + b)
-        return res
-
-    def genTime(self, digits):
-        res = []
-        td = self.genTwoDigits(digits)
-        for hh in td:
-            if hh >= 24: continue
-            for mm in td:
-                if mm >= 60: continue
-                res.append((hh, mm))
-        return res
-    
-    def to_string(self, digits):
-        res = str(digits)
-        if len(res) == 1:
-            return '0' + res
-        else:
+    def get_next(self, pool, current):
+        n = len(current)
+        p = n - 1
+        while p >= 0:
+            if current[p] == pool[-1]:
+                p -= 1
+                continue
+            i = 0
+            while i < len(pool):
+                if current[p] == pool[i]:
+                    break
+                i += 1
+            res = current[:]
+            res[p] = pool[i + 1]
+            for i in range(p + 1, n):
+                res[i] = pool[0]
             return res
-
+        return pool[0] * n
+        
     def nextClosestTime(self, time):
         """
         :type time: str
         :rtype: str
         """
-        digits = set()
-        for c in time:
-            if c == ':': continue
-            digits.add(int(c))
-        times = self.genTime(digits)
-        l_time = time.split(':')
-        t_time = (int(l_time[0]), int(l_time[1]))
-
-        def my_cmp(a, b):
-            if a[0] < b[0]:
-                return -1
-            elif a[0] > b[0]:
-                return 1
-            if a[1] < b[1]:
-                return -1
-            elif a[1] > b[1]:
-                return 1
-
-        times.sort(cmp=my_cmp)
-        for i in range(len(times)):
-            if my_cmp(times[i], t_time) >= 1:
-                return self.to_string(times[i][0]) + ':' + self.to_string(times[i][1])
-        return self.to_string(times[0][0]) + ':' + self.to_string(times[0][1])
-    
+        l = list(time)
+        del l[2]
+        pool = sorted(list(set(l)))
+        cur = l
+        while True:
+            nxt = self.get_next(pool, cur)
+            hour = int(nxt[0] + nxt[1])
+            minute = int(nxt[2] + nxt[3])
+            if hour < 24 and minute < 60:
+                return nxt[0] + nxt[1] + ':' + nxt[2] + nxt[3]
+            else:
+                cur = nxt
+        

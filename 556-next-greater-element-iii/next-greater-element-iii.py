@@ -5,15 +5,22 @@
 #
 # Example 1:
 #
+#
 # Input: 12
 # Output: 21
 #
 #
+#  
 #
 # Example 2:
 #
+#
 # Input: 21
 # Output: -1
+#
+#
+#  
+#
 
 
 class Solution(object):

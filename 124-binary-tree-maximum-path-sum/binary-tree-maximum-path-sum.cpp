@@ -1,19 +1,33 @@
-// Given a binary tree, find the maximum path sum.
-//
+// Given a non-empty binary tree, find the maximum path sum.
 //
 // For this problem, a path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The path must contain at least one node and does not need to go through the root.
 //
+// Example 1:
 //
-// For example:
-// Given the below binary tree,
+//
+// Input: [1,2,3]
 //
 //        1
 //       / \
 //      2   3
 //
+// Output: 6
 //
 //
-// Return 6.
+// Example 2:
+//
+//
+// Input: [-10,9,20,null,null,15,7]
+//
+//    -10
+//    / \
+//   9  20
+//     /  \
+//    15   7
+//
+// Output: 42
+//
+//
 
 
 /**
@@ -27,23 +41,24 @@
  */
 class Solution {
 private:
-    int globalMax = INT_MIN;
+    int result;
     
-    int calc(TreeNode *root) {
-        if (root == NULL) return 0;
-        int left = calc(root->left);
-        int right = calc(root->right);
-        left = left > 0 ? left : 0;
-        right = right > 0 ? right : 0;
-        int lr = root->val + left + right;
-        int cur = left > right ? left : right;
-        globalMax = globalMax > lr ? globalMax : lr;
-        return cur + root->val;
+    int dfs(TreeNode* root) {
+        if (root == NULL)
+            return 0;
+        int left = dfs(root->left);
+        int right = dfs(root->right);
+        int current = max(left, 0) + max(right, 0) + root->val;
+        result = max(result, current);
+        return max(max(left, right), 0) + root->val;
     }
     
 public:
     int maxPathSum(TreeNode* root) {
-        calc(root);
-        return globalMax;
+        if (root == NULL)
+            return 0;
+        result = INT_MIN;
+        dfs(root);
+        return result;
     }
 };

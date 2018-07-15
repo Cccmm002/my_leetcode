@@ -29,6 +29,8 @@
 # The garden has at least one tree. 
 # All coordinates are distinct. 
 # Input points have NO order. No order required for output.
+#
+#
 
 
 # Definition for a point.

@@ -50,6 +50,7 @@
 //
 // Note:
 // The given binary tree has not more than 10000 nodes.  The height of the tree is not more than 1000.
+//
 
 
 /**
@@ -63,23 +64,31 @@
  */
 class Solution {
 private:
-    int forRoot(TreeNode *root, int prev) {
-        if (root == NULL) return 0;
-        if (root->val != prev) return 0;
-        return max(forRoot(root->left, prev), forRoot(root->right, prev)) + 1;
-    }
+    int result;
     
-    int nonForRoot(TreeNode *root) {
-        if (root == NULL) return 0;
-        int rt = forRoot(root->left, root->val) + forRoot(root->right, root->val) + 1;
-        int left = nonForRoot(root->left);
-        int right = nonForRoot(root->right);
-        return max(rt, max(left, right));
+    int UnivaluePath(TreeNode* root) {
+        if (root == NULL) 
+            return 0;
+        int left = UnivaluePath(root->left);
+        int right = UnivaluePath(root->right);
+        int single_path = 1, current = 1;
+        if (root->left != NULL && root->left->val == root->val) {
+            single_path = max(single_path, 1 + left);
+            current += left;
+        }
+        if (root->right != NULL && root->right->val == root->val) {
+            single_path = max(single_path, 1 + right);
+            current += right;
+        }
+        result = max(result, current);
+        return single_path;
     }
     
 public:
     int longestUnivaluePath(TreeNode* root) {
         if (root == NULL) return 0;
-        return nonForRoot(root) - 1;
+        result = 0;
+        UnivaluePath(root);
+        return result - 1;
     }
 };

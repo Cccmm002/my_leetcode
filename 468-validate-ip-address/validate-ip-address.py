@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 
+#
 # Write a function to check whether an input string is a valid IPv4 address or IPv6 address or neither.
 #
 #
@@ -58,6 +59,8 @@
 # Output: "Neither"
 #
 # Explanation: This is neither a IPv4 address nor a IPv6 address.
+#
+#
 
 
 class Solution(object):

@@ -21,7 +21,7 @@
 #
 #
 # Note: 
-# You may assume k is always valid, 1 &le; k &le; n2.
+# You may assume k is always valid, 1 ≤ k ≤ n2.
 
 
 class Solution(object):

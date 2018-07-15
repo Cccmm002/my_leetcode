@@ -10,7 +10,7 @@
 #
 # Note:
 #
-# The number of stones is &ge; 2 and is < 1,100.
+# The number of stones is ≥ 2 and is < 1,100.
 # Each stone's position will be a non-negative integer < 231.
 # The first stone's position is always 0.
 #
@@ -38,6 +38,8 @@
 #
 # Return false. There is no way to jump to the last stone as 
 # the gap between the 5th and 6th stone is too large.
+#
+#
 
 
 class Solution(object):

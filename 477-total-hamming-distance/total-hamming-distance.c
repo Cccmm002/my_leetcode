@@ -18,7 +18,9 @@
 // Note:
 //
 // Elements of the given array are in the range of 0  to 10^9
-// Length of the array will not exceed 10^4.
+// Length of the array will not exceed 10^4. 
+//
+//
 
 
 int totalHammingDistance(int* nums, int numsSize) {

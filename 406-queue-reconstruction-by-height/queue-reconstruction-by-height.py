@@ -8,6 +8,8 @@
 # The number of people is less than 1,100.
 #
 #
+#
+#
 # Example
 #
 # Input:
@@ -15,6 +17,8 @@
 #
 # Output:
 # [[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]]
+#
+#
 
 
 class Solution(object):

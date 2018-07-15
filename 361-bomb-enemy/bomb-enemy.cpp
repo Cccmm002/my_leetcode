@@ -22,56 +22,50 @@ public:
         int height = grid.size();
         if (height == 0) return 0;
         int width = grid[0].size();
-        vector<vector<int>> head_row(height);
-        vector<vector<int>> head_col(height);
-        for (int i = 0; i < height; ++i) {
-            vector<int> v1(width);
-            vector<int> v2(width);
-            head_row[i] = v1; head_col[i] = v2;
-            for (int j = 0; j < width; ++j) {
-                head_row[i][j] = 0; head_col[i][j] = 0;
-                if (grid[i][j] != 'W') {
-                    if (i != 0) {
-                        head_row[i][j] += head_row[i-1][j];
-                        if (grid[i-1][j] == 'E') head_row[i][j]++;
-                    }
-                    if (j != 0) {
-                        head_col[i][j] += head_col[i][j-1];
-                        if (grid[i][j-1] == 'E') head_col[i][j]++;
-                    }
+        if (width == 0) return 0;
+        
+        vector<vector<int>> left(height, vector<int>(width, 0));
+        vector<vector<int>> right(height, vector<int>(width, 0));
+        vector<vector<int>> up(height, vector<int>(width, 0));
+        vector<vector<int>> down(height, vector<int>(width, 0));
+        
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (grid[i][j] == 'W') {
+                    left[i][j] = 0;
+                    up[i][j] = 0;
+                }
+                else {
+                    left[i][j] = grid[i][j] == 'E' ? 1 : 0;
+                    up[i][j] = grid[i][j] == 'E' ? 1 : 0;
+                    if (i > 0) left[i][j] += left[i - 1][j];
+                    if (j > 0) up[i][j] += up[i][j - 1];
                 }
             }
         }
-        vector<vector<int>> tail_row(height);
-        vector<vector<int>> tail_col(height);
         for (int i = height - 1; i >= 0; i--) {
-            vector<int> v1(width);
-            vector<int> v2(width);
-            tail_row[i] = v1; tail_col[i] = v2;
             for (int j = width - 1; j >= 0; j--) {
-                tail_row[i][j] = 0; tail_col[i][j] = 0;
-                if (grid[i][j] != 'W') {
-                    if (i != height - 1) {
-                        tail_row[i][j] += tail_row[i+1][j];
-                        if (grid[i+1][j] == 'E') tail_row[i][j]++;
-                    }
-                    if (j != width - 1) {
-                        tail_col[i][j] += tail_col[i][j+1];
-                        if (grid[i][j+1] == 'E') tail_col[i][j]++;
-                    }
+                if (grid[i][j] == 'W') {
+                    right[i][j] = 0;
+                    down[i][j] = 0;
+                }
+                else {
+                    right[i][j] = grid[i][j] == 'E' ? 1 : 0;
+                    down[i][j] = grid[i][j] == 'E' ? 1 : 0;
+                    if (i < height - 1) right[i][j] += right[i + 1][j];
+                    if (j < width - 1) down[i][j] += down[i][j + 1];
                 }
             }
         }
-        int largest = 0;
-        for (int i = 0; i < height; ++i) {
-            for (int j = 0; j < width; ++j) {
-                //cout<<i<<" "<<j<<" "<<tail_col[i][j] << " " << head_col[i][j] << " " << tail_row[i][j] << " " << head_row[i][j]<<endl;
-                if (grid[i][j] == '0') {
-                    int cur = tail_col[i][j] + head_col[i][j] + tail_row[i][j] + head_row[i][j];
-                    largest = max(largest, cur);
-                }
+        int res = 0;
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (grid[i][j] == 'W' || grid[i][j] == 'E')
+                    continue;
+                int cur = left[i][j] + right[i][j] + up[i][j] + down[i][j];
+                res = max(res, cur);
             }
         }
-        return largest;
+        return res;
     }
 };

@@ -35,6 +35,8 @@
 # Note:
 #
 # The length of the input is in range of [1, 10000]
+#
+#
 
 
 class Solution(object):

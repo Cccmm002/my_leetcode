@@ -7,15 +7,28 @@
 #
 # All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.
 #
-# For example,
-# Given "egg", "add", return true.
+# Example 1:
 #
-# Given "foo", "bar", return false.
 #
-# Given "paper", "title", return true.
+# Input: s = "egg", t = "add"
+# Output: true
+#
+#
+# Example 2:
+#
+#
+# Input: s = "foo", t = "bar"
+# Output: false
+#
+# Example 3:
+#
+#
+# Input: s = "paper", t = "title"
+# Output: true
 #
 # Note:
-# You may assume both s and t have the same length.
+# You may assume both s and t have the same length.
+#
 
 
 class Solution(object):

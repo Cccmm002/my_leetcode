@@ -27,6 +27,8 @@
 #
 # Note:
 # The number of boxes n would not exceed 100.
+#
+#
 
 
 class Solution(object):

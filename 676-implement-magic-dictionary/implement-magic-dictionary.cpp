@@ -1,3 +1,4 @@
+//
 // Implement a magic directory with buildDict, and search methods.
 //
 //
@@ -24,6 +25,8 @@
 // You may assume that all the inputs are consist of lowercase letters a-z.
 // For contest purpose, the test data is rather small by now. You could think about highly efficient algorithm after the contest.
 // Please remember to RESET your class variables declared in class MagicDictionary, as static/class variables are persisted across multiple test cases. Please see here for more details.
+//
+//
 
 
 class MagicDictionary {

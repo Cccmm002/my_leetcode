@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 
+#
 # LeetCode wants to give one of its best employees the option to travel among N cities to collect algorithm problems. But all work and no play makes Jack a dull boy, you could take vacations in some particular cities and weeks. Your job is to schedule the traveling to maximize the number of vacation days you could take, but there are certain rules and restrictions you need to follow.
 #
 #
@@ -57,6 +58,8 @@
 # You could stay at a city beyond the number of vacation days, but you should work on the extra days, which won't be counted as vacation days.
 # If you fly from the city A to the city B and take the vacation on that day, the deduction towards vacation days will count towards the vacation days of city B in that week.
 # We don't consider the impact of flight hours towards the calculation of vacation days.
+#
+#
 
 
 class Solution(object):

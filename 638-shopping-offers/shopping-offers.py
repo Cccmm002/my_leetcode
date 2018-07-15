@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 
+#
 # In LeetCode Store, there are some kinds of items to sell. Each item has a price.
 #
 #
@@ -48,6 +49,8 @@
 # There are at most 6 kinds of items, 100 special offers.
 # For each item, you need to buy at most 6 of them.
 # You are not allowed to buy more items than you want, even if that would lower the overall price.
+#
+#
 
 
 class Solution(object):

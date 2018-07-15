@@ -1,17 +1,24 @@
 # -*- coding:utf-8 -*-
 
 
-# Given a string, find the length of the longest substring T that contains at most 2 distinct characters.
+# Given a string s , find the length of the longest substring t  that contains at most 2 distinct characters.
+#
+# Example 1:
 #
 #
-#
-# For example,
-#
-# Given s = “eceba”,
-#
+# Input: "eceba"
+# Output: 3
+# Explanation: t is "ece" which its length is 3.
 #
 #
-# T is "ece" which its length is 3.
+# Example 2:
+#
+#
+# Input: "ccaabbb"
+# Output: 5
+# Explanation: t is "aabbb" which its length is 5.
+#
+#
 
 
 class Solution(object):

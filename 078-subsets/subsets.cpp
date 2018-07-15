@@ -2,22 +2,22 @@
 //
 // Note: The solution set must not contain duplicate subsets.
 //
-//
-// For example,
-// If nums = [1,2,3], a solution is:
+// Example:
 //
 //
-//
+// Input: nums = [1,2,3]
+// Output:
 // [
 //   [3],
-//   [1],
-//   [2],
-//   [1,2,3],
-//   [1,3],
-//   [2,3],
-//   [1,2],
-//   []
+//   [1],
+//   [2],
+//   [1,2,3],
+//   [1,3],
+//   [2,3],
+//   [1,2],
+//   []
 // ]
+//
 
 
 class Solution {

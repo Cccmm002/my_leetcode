@@ -1,4 +1,5 @@
-// Given an unsorted array of integers, find the length of longest continuous increasing subsequence.
+//
+// Given an unsorted array of integers, find the length of longest continuous increasing subsequence (subarray).
 //
 //
 // Example 1:
@@ -20,6 +21,7 @@
 //
 // Note:
 // Length of the array will not exceed 10,000.
+//
 
 
 class Solution {

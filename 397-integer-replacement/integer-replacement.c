@@ -1,3 +1,4 @@
+//
 // Given a positive integer n and you can do operations as follow:
 //
 //
@@ -39,6 +40,8 @@
 // 7 -> 8 -> 4 -> 2 -> 1
 // or
 // 7 -> 6 -> 3 -> 2 -> 1
+//
+//
 
 
 int integerReplacement(int _n) {

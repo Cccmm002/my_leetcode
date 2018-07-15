@@ -25,6 +25,8 @@
 // Output: false
 //
 // Explanation: The array cannot be partitioned into equal sum subsets.
+//
+//
 
 
 bool canPartition(int* nums, int numsSize) {

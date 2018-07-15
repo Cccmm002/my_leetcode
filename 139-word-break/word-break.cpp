@@ -1,40 +1,57 @@
-// Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be segmented into a space-separated sequence of one or more dictionary words. You may assume the dictionary does not contain duplicate words.
+// Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
+//
+// Note:
 //
 //
-// For example, given
-// s = "leetcode",
-// dict = ["leet", "code"].
+// 	The same word in the dictionary may be reused multiple times in the segmentation.
+// 	You may assume the dictionary does not contain duplicate words.
 //
 //
-//
-// Return true because "leetcode" can be segmented as "leet code".
-//
+// Example 1:
 //
 //
-// UPDATE (2017/1/4):
-// The wordDict parameter had been changed to a list of strings (instead of a set of strings). Please reload the code definition to get the latest changes.
+// Input: s = "leetcode", wordDict = ["leet", "code"]
+// Output: true
+// Explanation: Return true because "leetcode" can be segmented as "leet code".
+//
+//
+// Example 2:
+//
+//
+// Input: s = "applepenapple", wordDict = ["apple", "pen"]
+// Output: true
+// Explanation: Return true because "applepenapple" can be segmented as "apple pen apple".
+//              Note that you are allowed to reuse a dictionary word.
+//
+//
+// Example 3:
+//
+//
+// Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
+// Output: false
+//
+//
 
 
 class Solution {
 public:
     bool wordBreak(string s, vector<string>& wordDict) {
-        int len = s.size();
-        if (len == 0) return false;
-        unordered_set<string> us;
-        for (string str:wordDict) {
-            us.insert(str);
-        }
-        vector<bool> arr(len + 1);
+        int n = s.size();
+        unordered_set<string> words;
+        for (string w : wordDict) words.insert(w);
+        vector<bool> arr(n + 1, false);
         arr[0] = true;
-        for (int i = 1; i <= len; ++i) {
-            for (int t = 1; t <= i; ++t) {
-                bool inlist = us.find(s.substr(i - t, t)) != us.end();
-                if (inlist && arr[i - t]) {
+        for (int i = 1; i <= n; i++) {
+            for (int t = 0; t < i;t++) {
+                if (!arr[t]) continue;
+                string sub = s.substr(t, i - t);
+                if (words.find(sub) != words.end()) {
                     arr[i] = true;
                     break;
                 }
+                arr[i] = false;
             }
         }
-        return arr[len];
+        return arr[n];
     }
 };

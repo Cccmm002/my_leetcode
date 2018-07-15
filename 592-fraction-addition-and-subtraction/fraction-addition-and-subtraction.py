@@ -38,6 +38,8 @@
 # The input only contains valid irreducible fractions, where the numerator and denominator of each fraction will always be in the range [1,10]. If the denominator is 1, it means this fraction is actually an integer in a fraction format defined above. 
 # The number of given fractions will be in the range [1,10].
 # The numerator and denominator of the final result are guaranteed to be valid and in the range of 32-bit int.
+#
+#
 
 
 class Solution(object):

@@ -1,73 +1,81 @@
 // Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results.
 //
-// Note: The input string may contain letters other than the parentheses ( and ). 
+// Note: The input string may contain letters other than the parentheses ( and ).
+//
+// Example 1:
 //
 //
-//
-// Examples:
-//
-// "()())()" -> ["()()()", "(())()"]
-// "(a)())()" -> ["(a)()()", "(a())()"]
-// ")(" -> [""]
+// Input: "()())()"
+// Output: ["()()()", "(())()"]
 //
 //
+// Example 2:
 //
-// Credits:Special thanks to @hpplayer for adding this problem and creating all test cases.
+//
+// Input: "(a)())()"
+// Output: ["(a)()()", "(a())()"]
+//
+//
+// Example 3:
+//
+//
+// Input: ")("
+// Output: [""]
+//
+//
 
 
 class Solution {
 private:
-    unordered_map<string, pair<int, unordered_set<string>>> dict;
-    
     inline bool valid(string s) {
         int n = s.size();
-        int count = 0;
+        int c = 0;
         for (int i = 0; i < n; i++) {
-            if (s[i] == '(') count++;
-            else if (s[i] == ')') count--;
-            if (count < 0) return false;
-        }
-        return count == 0;
-    }
-    
-    unordered_set<string> find(string s, int *res) {
-        if (dict.find(s) != dict.end()) {
-            *res = dict[s].first;
-            return dict[s].second;
-        }
-        unordered_set<string> rss;
-        if (valid(s)) {
-            rss.insert(s);
-            dict[s] = make_pair(0, rss);
-            *res = 0;
-            return rss;
-        }
-        int n = s.size();
-        int r = INT_MAX;
-        for (int i = 0; i < n; i++) {
-            if (s[i] != '(' && s[i] != ')') continue;
-            string next = s.substr(0, i) + s.substr(i + 1, n - i - 1);
-            int next_res;
-            unordered_set<string> us = find(next, &next_res);
-            if (next_res == r) {
-                for (string st : us) rss.insert(st);
-            }
-            else if (next_res < r) {
-                r = next_res;
-                rss = us;
+            if (s[i] != '(' && s[i] != ')')
+                continue;
+            if (s[i] == '(')
+                c++;
+            if (s[i] == ')') {
+                c--;
+                if (c < 0)
+                    return false;
             }
         }
-        *res = r + 1;
-        dict[s] = make_pair(r + 1, rss);
-        return rss;
+        return c == 0;
     }
     
 public:
     vector<string> removeInvalidParentheses(string s) {
+        if (valid(s)) return {s};
+        unordered_set<string> visited;
         vector<string> res;
-        int count;
-        unordered_set<string> r = find(s, &count);
-        for (string st : r) res.push_back(st);
+        queue<string> q;
+        q.push(s);
+        visited.insert(s);
+        while (!q.empty()) {
+            if (res.size() > 0)
+                return res;
+            int queue_count = q.size();
+            for (int i = 0; i < queue_count; i++) {
+                string cur = q.front();
+                q.pop();
+                if (valid(cur)) {
+                    res.push_back(cur);
+                }
+                else {
+                    int len = cur.size();
+                    for (int k = 0; k < len; k++) {
+                        if (cur[k] != '(' && cur[k] != ')')
+                            continue;
+                        string ns = cur.substr(0, k) + cur.substr(k + 1, len - k - 1);
+                        if (visited.find(ns) != visited.end())
+                            continue;
+                        visited.insert(ns);
+                        q.push(ns);
+                    }
+                }
+            }
+        }
         return res;
     }
 };

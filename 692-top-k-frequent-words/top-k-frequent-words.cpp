@@ -21,7 +21,7 @@
 //
 // Note:
 //
-// You may assume k is always valid, 1 &le; k &le; number of unique elements.
+// You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
 // Input words contain only lowercase letters.
 //
 //
@@ -29,6 +29,8 @@
 // Follow up:
 //
 // Try to solve it in O(n log k) time and O(n) extra space.
+//
+//
 
 
 struct Word {

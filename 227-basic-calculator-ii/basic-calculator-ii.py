@@ -5,21 +5,33 @@
 #
 # The expression string contains only non-negative integers, +, -, *, / operators and empty spaces  . The integer division should truncate toward zero.
 #
-# You may assume that the given expression is always valid.
-#
-# Some examples:
-#
-# "3+2*2" = 7
-# " 3/2 " = 1
-# " 3+5 / 2 " = 5
+# Example 1:
 #
 #
+# Input: "3+2*2"
+# Output: 7
 #
 #
-# Note: Do not use the eval built-in library function.
+# Example 2:
 #
 #
-# Credits:Special thanks to @ts for adding this problem and creating all test cases.
+# Input: " 3/2 "
+# Output: 1
+#
+# Example 3:
+#
+#
+# Input: " 3+5 / 2 "
+# Output: 5
+#
+#
+# Note:
+#
+#
+# 	You may assume that the given expression is always valid.
+# 	Do not use the eval built-in library function.
+#
+#
 
 
 class Solution(object):
@@ -28,45 +40,33 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        s += ' '
-        total_len = len(s)
-        stack = []
-        cur_num = None
-        prevsym = None
-        for i in range(total_len):
-            if s[i]>='0' and s[i]<='9':
-                if cur_num is None:
-                    cur_num = int(s[i])
+        s = s.replace(' ', '')
+        n = len(s)
+        res, prev = 0, 0
+        sign = '+'
+        p = 0
+        while p < n:
+            cur = 0
+            while p < n and s[p].isdigit():
+                cur = cur*10 + int(s[p])
+                p += 1
+            if sign == '+':
+                res += prev
+                prev = cur
+            elif sign == '-':
+                res += prev
+                prev = -cur
+            elif sign == '*':
+                prev *= cur
+            elif sign == '/':
+                temp = abs(prev) // cur
+                if prev < 0:
+                    prev = -temp
                 else:
-                    cur_num = cur_num*10 + int(s[i])
-            else:
-                if cur_num is not None:
-                    if prevsym == '*':
-                        p = stack.pop()
-                        stack.append(p*cur_num)
-                    elif prevsym == '/':
-                        p = stack.pop()
-                        stack.append(p/cur_num)
-                    else:
-                        stack.append(cur_num)
-                    cur_num = None
-                if s[i] == ' ':
-                    continue
-                if s[i] == '+' or s[i] == '-':
-                    prevsym = s[i]
-                    stack.append(s[i])
-                elif s[i] == '*' or s[i] == '/':
-                    prevsym = s[i]
-            # print(stack)
-        res = 0
-        prevsym = '+'
-        for i in range(len(stack)):
-            if stack[i] == '+' or stack[i] == '-':
-                prevsym = stack[i]
-            else:
-                if prevsym == '+':
-                    res += stack[i]
-                else:
-                    res = res - stack[i]
+                    prev = temp
+            if p < n and (s[p] == '+' or s[p] == '-' or s[p] == '*' or s[p] == '/'):
+                sign = s[p]
+            p += 1
+        res += prev
         return res
-                    
+                

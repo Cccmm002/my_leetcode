@@ -1,8 +1,11 @@
 // Given a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
 //
+// Example:
 //
-// For example:
-// Given the following binary tree,
+//
+// Input: [1,2,3,null,5,null,4]
+// Output: [1, 3, 4]
+// Explanation:
 //
 //    1            <---
 //  /   \
@@ -11,11 +14,6 @@
 //   5     4       <---
 //
 //
-//
-// You should return [1, 3, 4].
-//
-//
-// Credits:Special thanks to @amrsaqr for adding this problem and creating all test cases.
 
 
 /**

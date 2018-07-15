@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 
+#
 # You are given two arrays (without duplicates) nums1 and nums2 where nums1’s elements are subset of nums2. Find all the next greater numbers for nums1's elements in the corresponding places of nums2. 
 #
 #
@@ -34,6 +35,8 @@
 #
 # All elements in nums1 and nums2 are unique.
 # The length of both nums1 and nums2 would not exceed 1000.
+#
+#
 
 
 class Solution(object):

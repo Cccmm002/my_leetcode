@@ -7,33 +7,43 @@
 // m.next(10) = (1 + 10) / 2
 // m.next(3) = (1 + 10 + 3) / 3
 // m.next(5) = (10 + 3 + 5) / 3
+//
+//
 
 
 class MovingAverage {
 private:
-    queue<int> q;
-    int len;
+    int *arr;
+    int length;
+    int pointer;
+    int sum;
+    int count;
     
 public:
     /** Initialize your data structure here. */
     MovingAverage(int size) {
-        len = size;
-        q.empty();
+        arr = new int[size];
+        length = size;
+        pointer = 0;
+        sum = 0;
+        count = 0;
+        for (int i = 0; i < length; i++)
+            arr[i] = 0;
     }
     
     double next(int val) {
-        if (q.size() >= len)
-            q.pop();
-        q.push(val);
-        int s = q.size();
-        double sum = 0;
-        for (int i = 0; i < s; i++) {
-            int cur = q.front();
-            sum += (double)cur;
-            q.pop();
-            q.push(cur);
-        }
-        return sum/s;
+        sum -= arr[pointer];
+        sum += val;
+        arr[pointer] = val;
+        ++pointer;
+        if (count < length) ++count;
+        if (pointer >= length)
+            pointer = 0;
+        return ((double)sum)/((double)count);
+    }
+    
+    ~MovingAverage() {
+        delete[] arr;
     }
 };
 

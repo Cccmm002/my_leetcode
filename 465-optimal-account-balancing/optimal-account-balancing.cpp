@@ -4,7 +4,7 @@
 //
 // Note:
 //
-// A transaction will be given as a tuple (x, y, z). Note that x &ne; y and z > 0.
+// A transaction will be given as a tuple (x, y, z). Note that x ≠ y and z > 0.
 // Person's IDs may not be linear, e.g. we could have the persons 0, 1, 2 or we could also have the persons 0, 2, 6.
 //
 //
@@ -40,6 +40,8 @@
 // Person #2 gave person #0 $5.
 //
 // Therefore, person #1 only need to give person #0 $4, and all debt is settled.
+//
+//
 
 
 class Solution {
